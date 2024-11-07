@@ -15,32 +15,32 @@ foreach ( var i in out2 )
 
 Console.ReadLine();
 
-static Tuple<T , T> [] SimplePair<T>( T [] arr )
+static (T, T) [] SimplePair<T>( T [] arr )
 {
-    List<Tuple<T , T>> result = new();
+    List<(T, T)> result = new();
 
     for ( int i = 0 ; i < arr.Length ; i++ )
     {
         if ( i % 2 == 0 && i + 1 < arr.Length )
         {
             var temp = (arr [ i ], arr [ i + 1 ]);
-            result.Add( temp.ToTuple() );
+            result.Add( temp );
         }
     }
     return result.ToArray();
 }
 
-static Tuple<T , T> [] MergedPair<T>( T [] arr1 , T [] arr2 )
+static (T, T) [] MergedPair<T>( T [] arr1 , T [] arr2 )
 {
-    T [] smallarray = arr1.Length <= arr2.Length ? arr1 : arr2;
-    T [] largearray = arr1.Length > arr2.Length ? arr1 : arr2;
+    T [] small = arr1.Length <= arr2.Length ? arr1 : arr2;
+    T [] large = arr1.Length > arr2.Length ? arr1 : arr2;
 
-    List<Tuple<T , T>> result = new();
+    List<(T, T)> result = new();
 
-    for ( int i = 0 ; i < smallarray.Length ; i++ )
+    for ( int i = 0 ; i < small.Length ; i++ )
     {
-        var temp = (smallarray [ i ], largearray [ i ]);
-        result.Add( temp.ToTuple() );
+        var temp = (small [ i ], large [ i ]);
+        result.Add( temp );
     }
     return result.ToArray();
 }
