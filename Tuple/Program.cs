@@ -30,16 +30,15 @@ static (T, T) [] SimplePair<T>( T [] arr )
     return result.ToArray();
 }
 
-static (T, T) [] MergedPair<T>( T [] arr1 , T [] arr2 )
+static (T1, T2) [] MergedPair<T1, T2>( T1 [] arr1 , T2 [] arr2 )
 {
-    T [] small = arr1.Length <= arr2.Length ? arr1 : arr2;
-    T [] large = arr1.Length > arr2.Length ? arr1 : arr2;
+    int length = arr1.Length <= arr2.Length ? arr1.Length : arr2.Length;
 
-    List<(T, T)> result = new();
+    List<(T1, T2)> result = new();
 
-    for ( int i = 0 ; i < small.Length ; i++ )
+    for ( int i = 0 ; i < length ; i++ )
     {
-        var temp = (small [ i ], large [ i ]);
+        var temp = (arr1 [ i ], arr2 [ i ]);
         result.Add( temp );
     }
     return result.ToArray();
